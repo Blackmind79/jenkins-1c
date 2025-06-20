@@ -15,7 +15,7 @@ pipeline {
 		stage('SonarQube check') {
 			environment {
 				SONAR_TOKEN = credentials('SONAR_JENKINS_1C_TOKEN')
-				PATH = ${SONAR_SCANNER_HOME}/bin:${PATH}
+				PATH = "${SONAR_SCANNER_HOME}/bin:${PATH}"
 			}
             steps {
                 echo 'SonarQube Testing ...'
