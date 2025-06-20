@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo 'SonarQube Testing ...'
 				sh """
-				sonar-scanner -Dsonar.projectKey=jenkins-1c -Dsonar.sources=. -Dsonar.host.url=http://sc_sonar:9000
+				sonar-scanner -Dsonar.projectKey=jenkins-1c -Dsonar.sources=. -Dsonar.host.url=http://host.docker.internal:9000
 				"""
             }
         }
