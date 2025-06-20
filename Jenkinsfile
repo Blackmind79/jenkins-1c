@@ -18,7 +18,7 @@ pipeline {
 			}
             steps {
                 echo 'SonarQube Testing ...'
-				whereis sonar-scanner
+				sh 'whereis sonar-scanner'
                 sh '''
 					sonar-scanner -Dsonar.projectKey=jenkins-1c -Dsonar.sources=. -Dsonar.host.url=http://host.docker.internal:9000
                 '''				
