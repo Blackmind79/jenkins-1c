@@ -3,9 +3,9 @@ pipeline {
     agent {
        label "1c"
     }
-    environment {
-		// GLOBAL_VAR = "Test variable"
-    }	
+    // environment {
+	// 	GLOBAL_VAR = "Test variable"
+    // }	
     stages {
         
 		stage('Vanessa tests') {
