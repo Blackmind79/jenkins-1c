@@ -67,9 +67,9 @@
         "ЗакрытьTestClientПослеЗапускаСценариев": true,
         "ДанныеКлиентовТестирования": [
             {
-                "Имя": "jenkins",
+                "Имя": "${REMOTE_INFOBASE_REF}",
                 "Синоним": "",
-                "ПутьКИнфобазе": "Srvr=\"host.docker.internal\";Ref=\"jenkins\";",
+                "ПутьКИнфобазе": "Srvr=\"${REMOTE_INFOBASE_SRVR}\";Ref=\"${REMOTE_INFOBASE_REF}\";",
                 "ПортЗапускаТестКлиента": 0,
                 "ДопПараметры": "/N \"${REMOTE_INFOBASE_LOGIN}\" /P \"${REMOTE_INFOBASE_PASSWORD}\"",
                 "ТипКлиента": "Тонкий",
@@ -80,7 +80,7 @@
     },
     "ДелатьОтчетВФорматеАллюр": true,
     "ОтчетAllure": {
-        "КаталогВыгрузкиAllure": "./vanessa/allure",
+        "КаталогВыгрузкиAllure": "/app/projects",
         "КаталогВыгрузкиAllureБазовый": "",
         "УровеньОтчета1": "",
         "УровеньОтчета2": "",
