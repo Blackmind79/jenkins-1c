@@ -1,7 +1,8 @@
 pipeline {
     // agent any
-    agent 1c
-
+    agent {
+       label "1c"
+    }
     environment {
 		// GLOBAL_VAR = "Test variable"
     }	
