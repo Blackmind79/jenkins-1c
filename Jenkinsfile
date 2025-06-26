@@ -18,7 +18,7 @@ pipeline {
                 REMOTE_INFOBASE_SRVR = credentials('REMOTE_INFOBASE_SRVR')
                 REMOTE_INFOBASE_REF = credentials('REMOTE_INFOBASE_REF')
                 // Combined envirmoents variables
-                REMOTE_INFOBASE_PATH="Srvr=\"${REMOTE_INFOBASE_SRVR}\";Ref=\"${REMOTE_INFOBASE_REF}\";"
+                REMOTE_INFOBASE_PATH = "Srvr=\"${REMOTE_INFOBASE_SRVR}\";Ref=\"${REMOTE_INFOBASE_REF}\";"
 			}
             steps {
                 echo 'Vanessa Testing ...'
@@ -27,10 +27,12 @@ pipeline {
                     envsubst < ./vanessa/VAParams.json.template > ./vanessa/VAParams.json
                 '''
                 echo 'Run vanessa-automation tests'
+                // Add to 1cv8c param if password exists: /P"${REMOTE_INFOBASE_PASSWORD}" \
                 sh '''
+                    export DISPLAY=:1
+                    echo "${DISPLAY}"
                     "/opt/1cv8/x86_64/8.3.26.1498/1cv8c"\
                       /N"${REMOTE_INFOBASE_LOGIN}" \
-                      /P"${REMOTE_INFOBASE_PASSWORD}" \
                       /TestManager \
                       /Execute "/usr/share/oscript/lib/vanessa-automation/vanessa-automation.epf" \
                       /IBConnectionString "${REMOTE_INFOBASE_PATH}" \
