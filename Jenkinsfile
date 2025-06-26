@@ -9,6 +9,12 @@ pipeline {
     stages {
         
 		stage('Vanessa tests') {
+            options {
+                // Set timeout for stage
+                // or you can set timeout for step like:
+                // timeout(time: 5, unit: 'MINUTES') { sh '<command>' }
+                timeout(time: 30, unit: 'MINUTES') 
+            }            
 			environment {
                 // Create credentials in Jenkins Global credentials store
                 REMOTE_INFOBASE_LOGIN = credentials('REMOTE_INFOBASE_LOGIN')
@@ -30,7 +36,7 @@ pipeline {
                 // Add to 1cv8c param if password exists: /P"${REMOTE_INFOBASE_PASSWORD}" \
                 sh '''
                     export DISPLAY=:1
-                    echo "${DISPLAY}"
+                    echo "DISPLAY ID: ${DISPLAY}"
                     "/opt/1cv8/x86_64/8.3.26.1498/1cv8c"\
                       /N"${REMOTE_INFOBASE_LOGIN}" \
                       /TestManager \
